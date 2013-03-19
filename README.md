@@ -1,7 +1,7 @@
 django-skel
 ===========
 
-A modern Django (1.4) project skeleton.
+A modern Django (1.5) project skeleton.
 
 ![A fancy Django project skeleton](https://github.com/rdegges/django-skel/raw/master/docs/source/_static/skel.jpg)
 
@@ -9,8 +9,8 @@ A modern Django (1.4) project skeleton.
 Meta
 ====
 
-* author: Randall Degges
-* email:  rdegges@gmail.com
+* authors: Randall Degges <rdegges@gmail.com>
+           Ben Cordero <bencord0@condi.me>
 * status: maintained, in development
 * notes:  Have feedback? Please send me an email. This project is still in its
           infancy, and will be changing rapidly.
@@ -42,22 +42,26 @@ project, so be sure to read them before using this boilerplate.
 Install
 =======
 
-django-skel currently supports Django 1.4. To create a new django-skel base
-project, run the following command (this assumes you have Django 1.4 installed
+django-skel currently supports Django 1.5. To create a new django-skel base
+project, run the following command (this assumes you have Django 1.5 installed
 already):
 
-    $ django-admin.py startproject --template=https://github.com/rdegges/django-skel/zipball/master woot
+    $ django-admin.py startproject --template=https://github.com/bencord0/django-skel/zipball/master woot
     $ heroku config:add DJANGO_SETTINGS_MODULE=myproject.settings.prod
 
 
 Where ``woot`` is the name of the project you'd like to create.
 
-This is possible because Django 1.4's ``startproject`` command allows you to
+This is possible because Django 1.5's ``startproject`` command allows you to
 fetch a project template over HTTP (which is what we're doing here).
 
 While not strictly required, it is also recommended to do
 
-     $ heroku config:add SECRET_KEY=putsomethingfairlycomplexhere
+     $ SECRET_KEY=$(python -c 'import random;
+         print "".join([random.choice(
+               "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
+         ) for i in range(50)])')
+     $ heroku config:add SECRET_KEY=$SECRET_KEY
 
 The production settings pull SECRET_KEY from environment but fallbacks
 to a value which is generated mainly for development environment.
