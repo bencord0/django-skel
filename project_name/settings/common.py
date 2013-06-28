@@ -4,10 +4,13 @@
 from datetime import timedelta
 from os import environ
 from os.path import abspath, basename, dirname, join, normpath
+import random
 from sys import path
 
 from djcelery import setup_loader
 truthy = ['True', 'true', 'Y', 'y', '1']
+
+import dj_database_url
 
 
 ########## PATH CONFIGURATION
@@ -39,7 +42,7 @@ TEMPLATE_DEBUG = DEBUG
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 # Set the environment ADMINS variable from a comma separated list of
 # name:<email@domain> pairs.
-ADMINS = ((name_email.split(':')) for name_email.strip() in environ.get('ADMINS', '').split(','))
+ADMINS = ((name_email.strip().split(':')) for name_email in environ.get('ADMINS', '').split(','))
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
@@ -67,7 +70,7 @@ SITE_ID = int(environ.get('SITE_ID', '1'))
 USE_I18N = environ.get('USE_I18N', 'True') in truthy
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-l10n
-USE_L10N = environ.get('USE_L10N', 'True') in trythy
+USE_L10N = environ.get('USE_L10N', 'True') in truthy
 ########## END GENERAL CONFIGURATION
 
 
@@ -107,7 +110,7 @@ STATICFILES_FINDERS = (
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = environ.get('SECRET_KEY', "".join([random.choice(
                "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
-             ) for i in range(50)])
+             ) for i in range(50)]))
 ########## END SECRET CONFIGURATION
 
 
