@@ -1,8 +1,13 @@
 # Python bytecode:
 *.py[co]
 
+# Virtualenv
+venv
+.venv
+
 # Packaging files:
 *.egg*
+dist
 
 # Editor temp files:
 *.swp
