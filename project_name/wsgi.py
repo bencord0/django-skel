@@ -26,3 +26,20 @@ application = get_wsgi_application()
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
+
+
+def main():
+    from django.core import management
+    from django.conf import settings
+
+    PORT = os.environ.get('PORT', 8000)
+
+    management.call_command('syncdb', interactive=False)
+
+    if 'gunicorn' in settings.INSTALLED_APPS:
+        management.call_command('run_gunicorn', '[::]:{PORT}'.format(PORT=PORT))
+    else:
+        management.call_command('runserver', '[::]:{PORT}'.format(PORT=PORT))
+
+if __name__ == '__main__':
+    main()
