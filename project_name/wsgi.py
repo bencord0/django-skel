@@ -34,7 +34,7 @@ def main():
 
     PORT = os.environ.get('PORT', 8000)
 
-    management.call_command('syncdb', interactive=False)
+    management.call_command('syncdb', interactive=False, migrate=True)
 
     if 'gunicorn' in settings.INSTALLED_APPS:
         management.call_command('run_gunicorn', '[::]:{PORT}'.format(PORT=PORT))
