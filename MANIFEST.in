@@ -3,4 +3,3 @@ include LICENSE
 include Procfile
 include requirements.txt
 include reqs/*
-include {{ project_name }}/templates/*.html
