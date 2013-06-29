@@ -132,6 +132,6 @@ SECRET_KEY = environ.get('SECRET_KEY', SECRET_KEY)
 
 ########## ALLOWED HOSTS CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = [ allowed_host.strip() for allowed_host in environ.get('ALLOWED_HOSTS', '.herokuapp.com').split(',')]
 ########## END ALLOWED HOST CONFIGURATION
 
