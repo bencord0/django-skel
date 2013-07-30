@@ -21,3 +21,14 @@ to a value which is generated mainly for development environment.
 
 This setup allows you to easily keep your site in a public repo if you so 
 wish without causing opening a route to attack your Django passwords.
+
+Dependencies
+============
+
+Gentoo
+------
+Recompile python with USE=sqlite
+Also install
+	dev-python/virtualenv
+	dev-db/postgresql-base
+	dev-libs/libmemcached

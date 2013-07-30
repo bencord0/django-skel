@@ -27,6 +27,9 @@ application = get_wsgi_application()
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
 
+# See: https://github.com/kennethreitz/dj-static/blob/master/README.rst
+from dj_static import Cling
+application = Cling(application)
 
 def main():
     from django.core import management
@@ -35,6 +38,7 @@ def main():
     PORT = os.environ.get('PORT', 8000)
 
     management.call_command('syncdb', interactive=False, migrate=True)
+    management.call_command('collectstatic', interactive=False)
 
     if 'gunicorn' in settings.INSTALLED_APPS:
         management.call_command('run_gunicorn', '[::]:{PORT}'.format(PORT=PORT))

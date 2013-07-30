@@ -86,6 +86,7 @@ MEDIA_URL = environ.get('MEDIA_URL', '/media/')
 
 ########## STATIC FILE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+# See: https://github.com/kennethreitz/dj-static/blob/master/README.rst
 STATIC_ROOT = normpath(join(DJANGO_ROOT, 'static'))
 STATIC_ROOT = environ.get('STATIC_ROOT', STATIC_ROOT)
 
@@ -94,7 +95,7 @@ STATIC_URL = environ.get('STATIC_URL', '/static/')
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
-    normpath(join(DJANGO_ROOT, 'assets')),
+#    normpath(join(DJANGO_ROOT, 'assets')),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
@@ -111,6 +112,9 @@ STATICFILES_FINDERS = (
 SECRET_KEY = environ.get('SECRET_KEY', "".join([random.choice(
                "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
              ) for i in range(50)]))
+if not environ.get('SECRET_KEY'):
+    print("SECRET_KEY is not set: Using a temporary value instead")
+    print("SECRET_KEY: {}".format(SECRET_KEY))
 ########## END SECRET CONFIGURATION
 
 
