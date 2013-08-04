@@ -238,6 +238,11 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        '{{ project_name }}': {
+            'handlers': ['mail_admins', 'console'],
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'propagate': True,
+        },
     }
 }
 ########## END LOGGING CONFIGURATION
