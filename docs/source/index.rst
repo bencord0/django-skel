@@ -23,7 +23,6 @@ shines.
 * Memcache caching support via `django-heroku-memcacheify <https://github.com/rdegges/django-heroku-memcacheify>`_.
 * PostgreSQL support via `django-heroku-postgresify <https://github.com/rdegges/django-heroku-postgresify>`_.
 * A blazing fast WSGI server for serving production traffic via `gunicorn <http://gunicorn.org/>`_ and `gevent <http://www.gevent.org/>`_.
-* Production application performance monitoring and usage statistics via `newrelic <http://newrelic.com/>`_.
 * All the best practices I've come to learn with more than 4 years of Django
   experience.
 * Built in support for production deployments on `Heroku's <http://www.heroku.com/>`_
