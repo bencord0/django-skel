@@ -4,6 +4,7 @@
 # Virtualenv
 venv
 .venv
+.env
 
 # Packaging files:
 *.egg*
